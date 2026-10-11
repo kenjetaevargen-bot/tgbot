@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: tg-daily-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: BOT_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OWNER_CHAT_ID
+        sync: false
+      - key: CITY
+        value: Bishkek
+      - key: TIMEZONE
+        value: Asia/Bishkek
+      - key: MORNING_TIME
+        value: "05:00"
+      - key: LUNCH_TIME
+        value: "13:00"
